@@ -1,7 +1,8 @@
 {
-  "name": "f-server",
+  "name": "f-server_base",
   "version": "1.0.0",
-  "description": "基于 Egg.js 的前端部署系统",
+  "description": "基于 Egg.js 的前端发布系统",
+  "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "egg": "^2.2.1",
@@ -28,7 +29,14 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-f-server",
     "stop": "egg-scripts stop --title=egg-server-f-server",
-    "dev": "export DOMAIN=saber-test-wms.haimaiche.net && egg-bin dev",
+    "dev": "export DOMAIN=aogu.aitter.cn && egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod",
     "migrate:new": "egg-sequelize migration:create --name init",
     "migrate:up": "egg-sequelize db:migrate",
     "migrate:down": "egg-sequelize db:migrate:undo"
